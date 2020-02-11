@@ -55,6 +55,8 @@ ul
 		animation-delay: .05s	
 		animation-timing-function: ease-in-out	
 		animation-iteration-count: infinite	
+	&:hover
+		cursor: pointer
 .header
 	position: fixed
 	top: 0
@@ -96,7 +98,10 @@ ul
 .overlay_active
 	display: block
 	animation: fadeIn .3s ease-in-out both
+.overlay_unactive
+	animation: fadeOut .3s ease-in-out both
 .header__menu-icon
+	min-width: 24px
 	min-height: 17px
 .header__menu-icon_open
 	position: absolute
@@ -149,6 +154,8 @@ ul
 .header__menu_media_active
 	display: block
 	animation: fadeInLeft .3s ease-in-out both
+.header__menu_media_unactive
+	animation: fadeOutLeft .3s ease-in-out both
 .header__nav_media
 	display: flex
 	flex-direction: column
@@ -159,11 +166,11 @@ ul
 		color: rgba(65, 69, 92, 0.8)
 		&::after
 			display: none
-	.header-menu__item_active
+	.menu__item_active
 		color: #41455C
 .header__phone_media
 	display: flex
-	align-items: center
+	align-items: start
 .header__item
 	display: flex
 	align-items: center
@@ -176,6 +183,9 @@ ul
 	margin-left: 20px
 	font-size: 20px
 	font-weight: 500
+.header__phone-text,.header__phone-text_media
+	margin-top: 10px
+	margin-left: 20px
 .logo__first-word
 	font-weight: bold
 	font-size: 18px
@@ -201,7 +211,7 @@ ul
 		margin-right: 0
 	&:hover
 		color: $color_default
-.header-menu__item_active
+.menu__item_active
 	font-weight: 600
 	color: $color_default
 	&:after
@@ -215,6 +225,8 @@ ul
 	display: flex
 	align-items: center
 	margin-right: 40px
+	&:hover
+		cursor: pointer
 .header-doc__text
 	margin-left: 10px
 	font-weight: 600
@@ -233,7 +245,7 @@ ul
 
 .hero
 	position: relative
-	min-height: 540px
+	min-height: 740px
 	margin-top: 96px
 	background-size: 100% 100%
 	background-position: center
@@ -251,7 +263,7 @@ ul
 	z-index: -1
 .hero__content
 	width: 50%
-	padding-top: 100px
+	padding-top: 200px
 	z-index: 1
 .hero__title
 	margin-bottom: 67px
@@ -269,10 +281,8 @@ ul
 	margin-bottom: 10px
 .hero-form__fields
 	margin-bottom: 20px
-
 .hero-form__name
 	margin-right: 20px
-
 .hero__text	
 	margin-bottom: 63px
 	font-weight: 500
@@ -280,14 +290,18 @@ ul
 	opacity: 0.8
 .hero__phone
 	display: flex
-	align-items: center
+	align-items: start
 .hero__phone-link
 	color: $color_default
+.hero__phone-text
+	font-weight: 500
+	margin-top: 5px
+	margin-left: 20px
 .hero-phone__tel
 	margin-left: 20px
 	font-weight: 600
 	font-size: 18px
-	line-height: 50px
+	line-height: 20px
 .hero__bg
 	position: absolute
 	top: 0
@@ -295,9 +309,14 @@ ul
 	width: 68%
 	height: 100%
 	z-index: -1
+	background: url('../img/hero_bg.png') no-repeat
+	background-position: right
+	background-size: cover
 .hero__img-bg
+	display: none
 	width: 100%
 	height: 100%
+	
 .hero__semicircle
 	position: absolute
 	left: 0
@@ -322,7 +341,6 @@ ul
 	width: 18%
 	max-width: 360px
 	min-width: 90px
-	z-index: -1
 	img
 		width: 100%
 .advantages__tooth_small
@@ -588,7 +606,7 @@ ul
 	width: 100%
 	z-index: 3
 .results__result-img
-	min-height: 250px
+	min-height: 180px
 .slick-dots
 	margin-top: 30px
 .slick-dot_custom
@@ -721,10 +739,13 @@ ul
 .questions__right-side
 	padding-right: 10%
 	padding-left: 6.4%
+	padding-bottom: 20px
 	background-color: #FAFAFF
 .questions__content
 	overflow-y: auto
 	max-height: 100%
+	&::-webkit-scrollbar
+		width: 0px
 .questions__title
 	font-weight: 600
 	font-size: 48px
@@ -759,20 +780,37 @@ ul
 
 .questions__item
 	margin-top: 20px
+	overflow: hidden
+.questions__item_active
+	.question__arrow
+		transform: scale(-1)
+	.answer
+		display: block
+		animation: fadeIn .3s ease-in-out both
+.questions__item_unactive
+	.answer
+		transform-origin: 50% 0
+		animation: scaleOut .5s ease-in-out both
 .question
 	display: flex
 	justify-content: space-between
 	align-items: center
+	position: relative
+	z-index: 3
 	width: 100%
 	padding: 16px 20px
 	border-radius: 3px
 	background-color: $accent_color
 	box-shadow: 0px 4px 32px rgba(15, 27, 97, 0.06)
+	&:hover
+		cursor: pointer
 .question__text
 	padding-right: 10px
 	border-radius: 3px
 	font-weight: 600
 	color: #FFFFFF
+.question__arrow
+	transition: all .5s ease-in-out
 .answer
 	display: none
 	padding: 18px 20px
@@ -780,6 +818,7 @@ ul
 	border: 2px solid rgba(14, 166, 166, 0.25)
 	box-shadow: 0px 4px 32px rgba(15, 27, 97, 0.06)
 	border-radius: 3px
+
 .answer_active
 //CHECKLIST 
 .checklist
@@ -798,9 +837,9 @@ ul
 .checklist__item
 	display: flex
 	align-items: flex-start
-	width: 33.333%
+	width: 30.333%
 	min-width: 245px
-	padding-right: 15px
+	margin-right: 30px
 	margin-bottom: 69px
 .checklist-item__num
 	margin-right: 23px
@@ -874,10 +913,15 @@ ul
 	flex-direction: column
 	width: 25%
 	margin-right: 10px
+	.menu__item_active
+		color: #ffffff
+		&::after
+			display: none
 .footer-menu__item
 	font-weight: 500
 	line-height: 44px
 	color: rgba(255, 255, 255, 0.8)
+	
 .footer__text
 	width: 75%
 	font-weight: 500
@@ -914,6 +958,8 @@ ul
 	text-align: center
 	color: #ffffff
 	background-color: #0C1233
+	&:hover
+		cursor: pointer
 .footer_media
 	display: none
 	flex-direction: column
@@ -939,6 +985,8 @@ ul
 	align-items: center
 	margin-bottom: 40px
 	text-align: center
+.footer__phone-wrapper_media
+	margin-left: 15px
 .footer-phone__text_media
 	text-align: start
 .footer__nav_media
@@ -956,12 +1004,28 @@ ul
 		transform: translate3d(5000%,0,0) rotate(45deg)
 @keyframes fadeInLeft
 	0%
-		transform: translate(-100%,0)
+		transform: translate3d(-100%,0,0)
 	100%
-		transform: translate(0,0)
+		transform: translate3d(0,0,0)
 @keyframes fadeIn
 	0%
 		opacity: 0
 	100%
 		opacity: 1
+@keyframes fadeOut
+	0%
+		opacity: 1
+	100%
+		opacity: 0
+@keyframes scaleOut
+	0%
+		transform: translate3d(0,0,0)
+	100%
+		transform: translate3d(0,-100%,0)
+		opacity: 0
+@keyframes fadeOutLeft
+	0%
+		transform: translate3d(0,0,0)
+	100%
+		transform: translate3d(-100%,0,0)
 @import media

@@ -1,3 +1,12 @@
+@media screen and ( max-width: 1440px )
+    .hero__img-bg
+        display: block
+    .hero__bg
+        background: initial
+    .hero
+        min-height: 540px
+    .hero__content
+        padding-top: 100px
 @media screen and ( max-width: 1198px )
     .header__item
         display: none
@@ -41,6 +50,7 @@
     .questions__doc-img
         width: 100%
         height: auto
+       
     .footer__row-top,.footer__row-bottom
         flex-direction: column
     .footer__col-top
@@ -70,6 +80,8 @@
             margin-bottom: 10px
     .hero__text
         margin-bottom: 30px
+    .hero__phone-text
+        width: 70%
     .hero__semicircle
         min-width: 825px
     .advantages__tooth_small
@@ -92,7 +104,7 @@
     .steps__tooth 
         display: none
     .steps__elainer
-        top: 25%
+        top: 35%
         bottom: initial
         min-width: 250px
     .reviews__arrows_custom
@@ -115,12 +127,12 @@
         width: 100%
         padding: 40px
     .questions__content
-        max-height: 720px
+        max-height: initial
     .questions__doc-img
         width: 70%
         height: 70%
+        max-width: 472px
 @media screen and ( max-width: 609px  )
-
     .hero-form__btn-submit
         width: 100%
     .hero__content
@@ -128,12 +140,12 @@
     .hero__title
         width: 70%
         height: 100vh
-        max-height: 420px
+        max-height: 580px
         font-size: 28px
     .hero__bg
         width: 100%
         height: 100vh
-        max-height: 420px
+        max-height: 580px
         &::before
             content: ""
             display: block
@@ -143,6 +155,13 @@
             top: 0
             left: 0
             background: linear-gradient(180deg, rgba(255, 255, 255, 0) 60.5%, #FFFFFF 96.93%)
+    .hero__img-bg
+        height: 95%
+        width: 135%
+        position: absolute 
+        right: 0
+        bottom: 0
+        z-index: -1
     .hero__form
         width: 100%
         margin: 0px auto 15px auto
@@ -151,10 +170,16 @@
         text-align: center
     .hero__phone
         justify-content: center
-    
+        margin-top: 10px
+    .hero-phone__content
+        width: 50%
+        min-width: 180px
+
     .hero__phone,.hero__text
         max-width: 380px
-        margin: 0 auto
+        margin: 15px auto 0 auto
+    .hero__phone-text
+        margin-top: 8px
     .hero__semicircle
         min-width: initial 
         height: 100vw
@@ -229,14 +254,23 @@
         min-width: 225px
     .questions__doc-img
         width: 90%
+        min-width: 420px
     .checklist__item
         width: 100%
+        margin-right: 10px
     .footer__row-top,.footer__row-bottom
         display: none
     .footer 
         padding: 60px 20px
     .footer_media
         display: flex
+@media screen and ( max-width: 525px  )      
+    .hero__img-bg
+        width: 125%
+    .hero__bg
+        max-height: 530px
+    .hero__title
+        max-height: 530px
 @media screen and ( max-width: 420px  )
     .wrapper-offset
         padding-left: 20px
@@ -248,11 +282,19 @@
     .header__tel_media
         margin-left: 15px
         font-size: 14px
+    .header__phone-text_media
+        margin-left: 15px
     .hero__title
         width: 100%
         text-align: center
         padding: 0 20px
         font-size: 24px
+        max-height: 500px
+    .hero__bg
+        max-height: 500px
+    .hero__img-bg
+        width: 150%
+        height: 79%
     .advantages
         padding-bottom: 60px
     .advantages__tooth_big
@@ -319,9 +361,10 @@
     .questions__left-side
         min-height: 520px
         padding: 40px 20px 0px 20px
-    .questions__doc-img
-        width: 100%
+    .questions__doc-img 
+        width: initial
         min-height: initial
+        min-width: initial
     .questions__right-side
         padding: 70px 20px 40px 20px
     .questions__doc-card
